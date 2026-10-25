@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="240" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05000a" />
+      <stop offset="50%" stop-color="#0a0118" />
+      <stop offset="100%" stop-color="#030005" />
+    </linearGradient>
+
+    <!-- Border Glow Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff0055" />
+      <stop offset="35%" stop-color="#7928ca" />
+      <stop offset="70%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#ff0055" />
+    </linearGradient>
+
+    <!-- Text Metallic Neon Gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#ff758c" />
+      <stop offset="60%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#ffffff" />
+    </linearGradient>
+
+    <!-- Mana Bar Surge Gradient -->
+    <linearGradient id="manaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff0055" />
+      <stop offset="30%" stop-color="#b800ff" />
+      <stop offset="70%" stop-color="#7000ff" />
+      <stop offset="100%" stop-color="#00f2fe" />
+    </linearGradient>
+
+    <!-- Kanji Gradient -->
+    <linearGradient id="kanjiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff0055" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#7928ca" stop-opacity="0.03" />
+    </linearGradient>
+
+    <!-- Radial Aura Orbs -->
+    <radialGradient id="auraLeft" cx="20%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ff0055" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#7928ca" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="auraRight" cx="80%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#7928ca" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Glow Filters -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="coreGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="cyberGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#ff0055" stroke-width="0.75" stroke-opacity="0.08" />
+      <circle cx="30" cy="0" r="1" fill="#00f2fe" fill-opacity="0.15" />
+    </pattern>
+  </defs>
+
+  <style>
+    /* Clean System Typography */
+    .mono { font-family: 'Consolas', 'Fira Code', 'Monaco', 'Courier New', monospace; }
+    .sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', sans-serif; }
+
+    /* Keyframe Animations */
+    @keyframes pulseAura {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+
+    @keyframes borderPulse {
+      0%, 100% { stroke-opacity: 0.8; filter: drop-shadow(0 0 4px #ff0055); }
+      50% { stroke-opacity: 1; filter: drop-shadow(0 0 10px #00f2fe); }
+    }
+
+    @keyframes manaCharge {
+      0% { width: 0; }
+      100% { width: 440px; }
+    }
+
+    @keyframes manaGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px #ff0055); }
+      50% { filter: drop-shadow(0 0 12px #00f2fe); }
+    }
+
+    @keyframes beaconBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    @keyframes scanlineAnim {
+      0% { transform: translateY(-240px); }
+      100% { transform: translateY(240px); }
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+      50% { transform: translateY(-15px) translateX(8px); opacity: 0.8; }
+      100% { transform: translateY(-30px) translateX(0px); opacity: 0; }
+    }
+
+    .aura-pulse { animation: pulseAura 4s ease-in-out infinite alternate; transform-origin: center; }
+    .border-glow { animation: borderPulse 3s ease-in-out infinite alternate; }
+    .mana-fill { animation: manaCharge 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards, manaGlow 2.5s ease-in-out infinite alternate; }
+    .beacon { animation: beaconBlink 1.5s ease-in-out infinite; transform-origin: 755px 25px; }
+    .particle-1 { animation: floatParticle 3.2s ease-in-out infinite; }
+    .particle-2 { animation: floatParticle 4s ease-in-out infinite 1.2s; }
+    .particle-3 { animation: floatParticle 3.6s ease-in-out infinite 0.7s; }
+    .scanline { animation: scanlineAnim 4s linear infinite; }
+  </style>
+
+  <!-- 1. BASE BACKGROUND & GRIDS -->
+  <rect width="800" height="240" rx="16" fill="url(#bgGrad)" />
+  <rect width="800" height="240" rx="16" fill="url(#cyberGrid)" />
+
+  <!-- 2. KI / CURSED ENERGY AURA BLOBS -->
+  <circle cx="140" cy="90" r="180" fill="url(#auraLeft)" class="aura-pulse" />
+  <circle cx="680" cy="150" r="160" fill="url(#auraRight)" class="aura-pulse" style="animation-delay: -2s;" />
+
+  <!-- 3. WATERMARK KANJI (領域展開 - Domain Expansion / 限界突破 - Limit Break) -->
+  <g user-select="none" pointer-events="none">
+    <text x="770" y="195" font-size="125" font-weight="900" font-family="'Segoe UI', 'Yu Gothic', 'Hiragino Sans', sans-serif" fill="url(#kanjiGrad)" text-anchor="end" letter-spacing="10">領域展開</text>
+  </g>
+
+  <!-- 4. SUBTLE SCANLINE OVERLAY -->
+  <g opacity="0.08" pointer-events="none">
+    <line x1="10" y1="0" x2="790" y2="0" stroke="#00f2fe" stroke-width="2" class="scanline" />
+  </g>
+
+  <!-- 5. CYBER FRAME / BORDER WITH NOTCHES -->
+  <rect x="8" y="8" width="784" height="224" rx="12" fill="none" stroke="url(#borderGrad)" stroke-width="1.6" class="border-glow" />
+  
+  <!-- Tech Corner Decals -->
+  <path d="M 16 32 L 16 16 L 32 16" fill="none" stroke="#ff0055" stroke-width="2.5" />
+  <path d="M 784 32 L 784 16 L 768 16" fill="none" stroke="#00f2fe" stroke-width="2.5" />
+  <path d="M 16 208 L 16 224 L 32 224" fill="none" stroke="#00f2fe" stroke-width="2.5" />
+  <path d="M 784 208 L 784 224 L 768 224" fill="none" stroke="#ff0055" stroke-width="2.5" />
+
+  <!-- 6. TOP PROTOCOL HEADER -->
+  <g class="mono" font-size="11" letter-spacing="1.5">
+    <text x="36" y="29" fill="#ff0055" font-weight="700">HUNTER SYSTEM</text>
+    <text x="145" y="29" fill="#ffffff" fill-opacity="0.3">//</text>
+    <text x="165" y="29" fill="#7928ca" font-weight="600">ID: RAJ-DUGANE-00</text>
+    <text x="315" y="29" fill="#ffffff" fill-opacity="0.3">//</text>
+    <text x="335" y="29" fill="#00f2fe" font-weight="600">DOMAIN EXPANSION: ACTIVE</text>
+    
+    <!-- System Status Pulse -->
+    <circle cx="725" cy="25" r="4.5" fill="#00f2fe" class="beacon" />
+    <text x="740" y="29" fill="#00f2fe" font-weight="700" text-anchor="start">ONLINE</text>
+  </g>
+
+  <line x1="26" y1="38" x2="774" y2="38" stroke="#32145a" stroke-width="1" stroke-dasharray="4 4" opacity="0.6" />
+
+  <!-- 7. MAIN TITLES & HUNTER IDENTITY -->
+  <!-- Rank / Class Badge -->
+  <g transform="translate(36, 52)">
+    <rect x="0" y="0" width="175" height="22" rx="4" fill="#ff0055" fill-opacity="0.15" stroke="#ff0055" stroke-width="1" />
+    <circle cx="10" cy="11" r="3" fill="#ff0055" />
+    <text x="20" y="15" class="mono" font-size="10" font-weight="800" fill="#ff758c" letter-spacing="1.5">S-RANK DEVELOPER</text>
+  </g>
+
+  <g transform="translate(220, 52)">
+    <rect x="0" y="0" width="160" height="22" rx="4" fill="#00f2fe" fill-opacity="0.12" stroke="#00f2fe" stroke-width="1" />
+    <text x="12" y="15" class="mono" font-size="10" font-weight="800" fill="#00f2fe" letter-spacing="1.5">MANA: LIMIT BREAK</text>
+  </g>
+
+  <!-- Player Name Header -->
+  <text x="36" y="112" class="sans" font-size="38" font-weight="900" fill="url(#textGrad)" letter-spacing="3" filter="url(#coreGlow)">
+    RAJ DUGANE
+  </text>
+
+  <!-- Player Subtitle / Core Role -->
+  <text x="38" y="134" class="mono" font-size="12" font-weight="700" fill="#00f2fe" letter-spacing="2">
+    FULL STACK ARCHITECT <tspan fill="#ffffff" fill-opacity="0.4">//</tspan> <tspan fill="#ff0055">AUTOMATION SPECIALIST</tspan>
+  </text>
+
+  <!-- 8. MANA BAR & POWER LEVEL (Solo Leveling & DBZ Surge) -->
+  <g transform="translate(36, 152)">
+    <!-- Header Labels -->
+    <text x="0" y="0" class="mono" font-size="10.5" font-weight="700" fill="#ffffff" fill-opacity="0.85" letter-spacing="1">
+      CURSED ENERGY OUTPUT <tspan fill="#ff0055">[OVERDRIVE]</tspan>
+    </text>
+    <text x="440" y="0" class="mono" font-size="10.5" font-weight="800" fill="#00f2fe" text-anchor="end" letter-spacing="1">
+      99,999 / 99,999 MP • 100%
+    </text>
+
+    <!-- Gauge Track -->
+    <rect x="0" y="8" width="440" height="14" rx="7" fill="#0d021c" stroke="#371569" stroke-width="1.5" />
+    
+    <!-- Animated Gauge Surge -->
+    <rect x="1" y="9" width="438" height="12" rx="6" fill="url(#manaGrad)" class="mana-fill" />
+
+    <!-- Notches across bar -->
+    <line x1="110" y1="8" x2="110" y2="22" stroke="#060010" stroke-width="1.5" opacity="0.6" />
+    <line x1="220" y1="8" x2="220" y2="22" stroke="#060010" stroke-width="1.5" opacity="0.6" />
+    <line x1="330" y1="8" x2="330" y2="22" stroke="#060010" stroke-width="1.5" opacity="0.6" />
+
+    <!-- Sub-bar Stat Notes -->
+    <text x="0" y="36" class="mono" font-size="9" fill="#a0a0c0" letter-spacing="0.8">
+      TECHNIQUES: <tspan fill="#ffffff">REACT.JS</tspan> • <tspan fill="#ffffff">TAILWIND</tspan> • <tspan fill="#ffffff">SUPABASE</tspan> • <tspan fill="#ffffff">PYTHON</tspan> • <tspan fill="#ffffff">C++</tspan> • <tspan fill="#ffffff">n8n</tspan>
+    </text>
+  </g>
+
+  <!-- 9. RIGHT DOSSIER / STAT MATRIX (HUD Screen) -->
+  <g transform="translate(515, 62)">
+    <!-- HUD Background Plate -->
+    <path d="M 0 0 L 235 0 L 250 15 L 250 145 L 15 145 L 0 130 Z" fill="#0d0122" fill-opacity="0.75" stroke="#7928ca" stroke-width="1.2" />
+    <line x1="0" y1="26" x2="250" y2="26" stroke="#7928ca" stroke-width="1" opacity="0.5" />
+
+    <!-- HUD Header -->
+    <text x="14" y="17" class="mono" font-size="9.5" font-weight="800" fill="#ff758c" letter-spacing="1.5">HUNTER PROFILE DOSSIER</text>
+    <rect x="226" y="8" width="10" height="10" fill="#00f2fe" fill-opacity="0.4" />
+
+    <!-- Attribute List strictly mapped from resume -->
+    <g class="mono" font-size="10" font-weight="600" fill="#cfcfe6">
+      <!-- Alma Mater / Guild -->
+      <text x="14" y="47">GUILD : <tspan fill="#ffffff" font-weight="700">MIT ADT UNIV '26</tspan></text>
+      <text x="14" y="65">DEGREE: <tspan fill="#00f2fe">B.Tech CSE</tspan> <tspan fill="#ff758c">[8.32 CGPA]</tspan></text>
+      
+      <!-- Prior Power -->
+      <text x="14" y="83">ORIGIN: <tspan fill="#ffffff">JSPM Diploma</tspan> <tspan fill="#00f2fe">[85.4%]</tspan></text>
+
+      <!-- Combat Records -->
+      <text x="14" y="103">QUESTS: <tspan fill="#ffffff">SIH Hackathon Contender</tspan></text>
+      <text x="14" y="121">ROLE  : <tspan fill="#ff758c">Placement Coordinator</tspan></text>
+      
+      <!-- Mission -->
+      <text x="14" y="139" fill="#00f2fe" font-weight="700">TARGET: <tspan fill="#ffffff">Software Internships</tspan></text>
+    </g>
+
+    <!-- Side Cyber Indicator -->
+    <line x1="246" y1="40" x2="246" y2="70" stroke="#ff0055" stroke-width="2.5" />
+    <line x1="246" y1="80" x2="246" y2="120" stroke="#00f2fe" stroke-width="2.5" />
+  </g>
+
+  <!-- 10. FLOATING KI PARTICLES -->
+  <circle cx="210" cy="180" r="1.5" fill="#00f2fe" class="particle-1" />
+  <circle cx="490" cy="130" r="2" fill="#ff0055" class="particle-2" />
+  <circle cx="160" cy="80" r="1.2" fill="#ffffff" class="particle-3" />
+  <circle cx="670" cy="45" r="1.8" fill="#00f2fe" class="particle-1" />
+  <circle cx="730" cy="190" r="1.5" fill="#ff0055" class="particle-2" />
+</svg>
